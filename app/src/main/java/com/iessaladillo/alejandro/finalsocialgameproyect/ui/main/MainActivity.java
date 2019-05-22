@@ -1,7 +1,8 @@
 package com.iessaladillo.alejandro.finalsocialgameproyect.ui.main;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.iessaladillo.alejandro.finalsocialgameproyect.R;
 

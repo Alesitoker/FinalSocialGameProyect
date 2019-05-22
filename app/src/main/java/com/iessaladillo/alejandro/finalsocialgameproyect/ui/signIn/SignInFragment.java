@@ -1,4 +1,4 @@
-package com.iessaladillo.alejandro.finalsocialgameproyect.ui.login;
+package com.iessaladillo.alejandro.finalsocialgameproyect.ui.signIn;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,14 +13,14 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.iessaladillo.alejandro.finalsocialgameproyect.R;
 
-public class LoginFragment extends Fragment {
+public class SignInFragment extends Fragment {
 
     private NavController navController;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        return inflater.inflate(R.layout.fragment_signin, container, false);
     }
 
     @Override
@@ -31,6 +31,6 @@ public class LoginFragment extends Fragment {
     }
 
     private void steupViews() {
-        lblNotRegister =
+
     }
 }
