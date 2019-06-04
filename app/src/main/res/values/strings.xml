@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">FinalSocialGameProyect</string>
+    <string name="loginFragment_title">Login</string>
+    <string name="signInFragment_title">Sing In</string>
+    <string name="chatFragment_title">Chats</string>
+    <string name="postFragment_title">Post</string>
+    <string name="txtInput_hint_email">Email</string>
+    <string name="txtInput_hint_password">Password</string>
+    <string name="fragment_login_btnLogin">Login</string>
+    <string name="fragment_login_lblNotRegistered">Not registered? Create an account</string>
+    <string name="fragment_signup_txtSignupUser">User</string>
+    <string name="fragment_signup_btnSignUp">Sign up</string>
+    <string name="fragment_signup_lblReturnLogin">Login</string>
 </resources>
