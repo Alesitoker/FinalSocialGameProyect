@@ -1,6 +1,8 @@
 package com.iessaladillo.alejandro.finalsocialgameproyect.ui.signUp;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +16,15 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.iessaladillo.alejandro.finalsocialgameproyect.R;
 import com.iessaladillo.alejandro.finalsocialgameproyect.databinding.FragmentSignupBinding;
+import com.iessaladillo.alejandro.finalsocialgameproyect.utils.ValidationUtils;
+import com.iessaladillo.alejandro.finalsocialgameproyect.utils.ValidationUtils.AfterTextChanged;
 
 public class SignUpFragment extends Fragment {
 
@@ -50,6 +58,21 @@ public class SignUpFragment extends Fragment {
     private void setupViews() {
         b.btnSignUp.setOnClickListener(v -> createAccount(b.txtEmail.getText().toString().trim(), b.txtPassword.getText().toString().trim()));
         b.lblReturnLogin.setOnClickListener(v -> returnToLogin());
+
+        b.txtEmail.addTextChangedListener((AfterTextChanged) s -> enableSignUp());
+        b.txtPassword.addTextChangedListener((AfterTextChanged) s -> enableSignUp());
+        b.txtUser.addTextChangedListener((AfterTextChanged) s -> enableSignUp());
+
+    }
+
+    private void enableSignUp() {
+        if (b.txtUser.getText().toString().isEmpty() || b.txtEmail.getText().toString().isEmpty()
+                || b.txtPassword.getText().toString().isEmpty()) {
+            b.btnSignUp.setEnabled(false);
+        } else {
+            b.btnSignUp.setEnabled(true);
+            validateForm();
+        }
     }
 
     private void createAccount(String email, String password) {
@@ -61,14 +84,43 @@ public class SignUpFragment extends Fragment {
                         updateProfile(user);
 //                        updateUI(user);
                     } else {
-                        Log.w("tag", "createUserWithEmail:failure", task.getException());
-                        Toast.makeText(requireActivity(), "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
+//                        Log.w("tag", "createUserWithEmail:failure", task.getException());
+//                        Toast.makeText(requireActivity(), task.getResult().getAdditionalUserInfo().toString(),
+//                                Toast.LENGTH_SHORT).show();
+
+                        try {
+                            throw task.getException();
+                        } catch(FirebaseAuthWeakPasswordException e) {
+                            validateForm();
+                            b.txtSignupPassword.requestFocus();
+                        } catch(FirebaseAuthInvalidCredentialsException e) {
+                            validateForm();
+                            b.txtSignupEmail.requestFocus();
+                        } catch(FirebaseAuthUserCollisionException e) {
+                            b.txtSignupEmail.setError(getString(R.string.error_user_exists));
+                            b.txtSignupEmail.requestFocus();
+                        } catch(Exception e) {
+                            Log.e("tag", e.getMessage());
+                        }
 //                        updateUI(null);
                     }
 
 //                    hideProgressDialog();
                 });
+    }
+
+    private void validateForm() {
+        if (!ValidationUtils.isValidEmail(b.txtEmail.getText().toString())) {
+            b.txtSignupEmail.setError(getString(R.string.error_invalid_email));
+        } else {
+            b.txtSignupEmail.setErrorEnabled(false);
+        }
+
+        if (b.txtPassword.getText().toString().length() < 5) {
+            b.txtSignupPassword.setError(getString(R.string.error_weak_password));
+        } else {
+            b.txtSignupPassword.setErrorEnabled(false);
+        }
     }
 
     private void updateProfile(FirebaseUser user) {

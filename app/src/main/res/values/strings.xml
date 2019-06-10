@@ -11,4 +11,7 @@
     <string name="fragment_signup_txtSignupUser">User</string>
     <string name="fragment_signup_btnSignUp">Sign up</string>
     <string name="fragment_signup_lblReturnLogin">Login</string>
+    <string name="error_weak_password">Password should be at least 6 characters</string>
+    <string name="error_user_exists">The email address is already in use.</string>
+    <string name="error_invalid_email">The email must be a valid email address.</string>
 </resources>

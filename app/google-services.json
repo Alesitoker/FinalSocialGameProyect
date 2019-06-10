@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "515458597401",
+    "firebase_url": "https://final-game-social.firebaseio.com",
+    "project_id": "final-game-social",
+    "storage_bucket": "final-game-social.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515458597401:android:65ad772e7bc5dfcd",
+        "android_client_info": {
+          "package_name": "com.iessaladillo.alejandro.finalsocialgameproyect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515458597401-tggcr4jfe7rijla43umeu0n6qamnroad.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iessaladillo.alejandro.finalsocialgameproyect",
+            "certificate_hash": "77553c7f3630cae8e1e44875902c90a6f929bdbf"
+          }
+        },
+        {
+          "client_id": "515458597401-jsllqnru8vha8nds7tbcjgrs7lro6vh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJazg2WkSrtiFqCffppPup6QEMXRFYjOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515458597401-jsllqnru8vha8nds7tbcjgrs7lro6vh6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
