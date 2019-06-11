@@ -1,13 +1,10 @@
 package com.iessaladillo.alejandro.finalsocialgameproyect.ui.signUp;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,8 +20,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.iessaladillo.alejandro.finalsocialgameproyect.R;
 import com.iessaladillo.alejandro.finalsocialgameproyect.databinding.FragmentSignupBinding;
+import com.iessaladillo.alejandro.finalsocialgameproyect.utils.SnackbarUtils;
 import com.iessaladillo.alejandro.finalsocialgameproyect.utils.ValidationUtils;
-import com.iessaladillo.alejandro.finalsocialgameproyect.utils.ValidationUtils.AfterTextChanged;
+import com.iessaladillo.alejandro.finalsocialgameproyect.utils.TextUtils.AfterTextChanged;
 
 public class SignUpFragment extends Fragment {
 
@@ -56,7 +54,8 @@ public class SignUpFragment extends Fragment {
     }
 
     private void setupViews() {
-        b.btnSignUp.setOnClickListener(v -> createAccount(b.txtEmail.getText().toString().trim(), b.txtPassword.getText().toString().trim()));
+        b.btnSignUp.setOnClickListener(v -> createAccount(b.txtEmail.getText().toString().trim(),
+                b.txtPassword.getText().toString().trim()));
         b.lblReturnLogin.setOnClickListener(v -> returnToLogin());
 
         b.txtEmail.addTextChangedListener((AfterTextChanged) s -> enableSignUp());
@@ -76,6 +75,7 @@ public class SignUpFragment extends Fragment {
     }
 
     private void createAccount(String email, String password) {
+        // TODO: quitar log, mejorar la sensacion de registro
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(requireActivity(), task -> {
                     if (task.isSuccessful()) {
@@ -85,7 +85,7 @@ public class SignUpFragment extends Fragment {
 //                        updateUI(user);
                     } else {
 //                        Log.w("tag", "createUserWithEmail:failure", task.getException());
-//                        Toast.makeText(requireActivity(), task.getResult().getAdditionalUserInfo().toString(),
+//                        Toast.makeText(requireContext(), task.getResult().getAdditionalUserInfo().toString(),
 //                                Toast.LENGTH_SHORT).show();
 
                         try {
@@ -97,8 +97,7 @@ public class SignUpFragment extends Fragment {
                             validateForm();
                             b.txtSignupEmail.requestFocus();
                         } catch(FirebaseAuthUserCollisionException e) {
-                            b.txtSignupEmail.setError(getString(R.string.error_user_exists));
-                            b.txtSignupEmail.requestFocus();
+                            SnackbarUtils.snackbar(requireView(), getString(R.string.error_user_exists));
                         } catch(Exception e) {
                             Log.e("tag", e.getMessage());
                         }
