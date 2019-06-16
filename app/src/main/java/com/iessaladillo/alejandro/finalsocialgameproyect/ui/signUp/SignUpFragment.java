@@ -21,8 +21,9 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.iessaladillo.alejandro.finalsocialgameproyect.R;
 import com.iessaladillo.alejandro.finalsocialgameproyect.databinding.FragmentSignupBinding;
 import com.iessaladillo.alejandro.finalsocialgameproyect.utils.SnackbarUtils;
-import com.iessaladillo.alejandro.finalsocialgameproyect.utils.ValidationUtils;
 import com.iessaladillo.alejandro.finalsocialgameproyect.utils.TextUtils.AfterTextChanged;
+
+import static com.iessaladillo.alejandro.finalsocialgameproyect.utils.ValidationUtils.*;
 
 public class SignUpFragment extends Fragment {
 
@@ -56,7 +57,7 @@ public class SignUpFragment extends Fragment {
     private void setupViews() {
         b.btnSignUp.setOnClickListener(v -> createAccount(b.txtEmail.getText().toString().trim(),
                 b.txtPassword.getText().toString().trim()));
-        b.lblReturnLogin.setOnClickListener(v -> returnToLogin());
+        b.lblReturnLogin.setOnClickListener(v -> navigateToLogin());
 
         b.txtEmail.addTextChangedListener((AfterTextChanged) s -> enableSignUp());
         b.txtPassword.addTextChangedListener((AfterTextChanged) s -> enableSignUp());
@@ -109,7 +110,7 @@ public class SignUpFragment extends Fragment {
     }
 
     private void validateForm() {
-        if (!ValidationUtils.isValidEmail(b.txtEmail.getText().toString())) {
+        if (!isValidEmail(b.txtEmail.getText().toString())) {
             b.txtSignupEmail.setError(getString(R.string.error_invalid_email));
         } else {
             b.txtSignupEmail.setErrorEnabled(false);
@@ -137,7 +138,7 @@ public class SignUpFragment extends Fragment {
         }
     }
 
-    private void returnToLogin() {
+    private void navigateToLogin() {
         navController.popBackStack();
     }
 }

@@ -1,12 +1,10 @@
 package com.iessaladillo.alejandro.finalsocialgameproyect.ui.login;
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,18 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.iessaladillo.alejandro.finalsocialgameproyect.R;
 import com.iessaladillo.alejandro.finalsocialgameproyect.databinding.FragmentLoginBinding;
 import com.iessaladillo.alejandro.finalsocialgameproyect.utils.SnackbarUtils;
-import com.iessaladillo.alejandro.finalsocialgameproyect.utils.TextUtils;
 import com.iessaladillo.alejandro.finalsocialgameproyect.utils.TextUtils.AfterTextChanged;
-import com.iessaladillo.alejandro.finalsocialgameproyect.utils.ValidationUtils;
 
 public class LoginFragment extends Fragment {
 
@@ -72,11 +65,11 @@ public class LoginFragment extends Fragment {
                     if (task.isSuccessful()) {
                         Log.d("tagL", "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-//                            updateUI(user);
+                        navigateToChat();
                     } else {
                         Log.w("tagL", "signInWithEmail:failure", task.getException());
-                        Toast.makeText(requireContext(), "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(requireContext(), "Authentication failed.",
+//                                Toast.LENGTH_SHORT).show();
 //                            updateUI(null);
                         try {
                             throw task.getException();
@@ -94,6 +87,10 @@ public class LoginFragment extends Fragment {
                     }
 //                        hideProgressDialog();
                 });
+    }
+
+    private void navigateToChat() {
+        navController.navigate(R.id.actionLoginToChat);
     }
 
     private void navigateToSignIn() {

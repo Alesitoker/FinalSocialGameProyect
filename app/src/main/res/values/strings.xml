@@ -1,17 +1,18 @@
 <resources>
     <string name="app_name">FinalSocialGameProyect</string>
-    <string name="loginFragment_title">Login</string>
-    <string name="signInFragment_title">Sing In</string>
-    <string name="chatFragment_title">Chats</string>
-    <string name="postFragment_title">Post</string>
+    <string name="loginFragment_title">Log in</string>
+    <string name="signInFragment_title">Sign up</string>
+    <string name="chatFragment_title" translatable="false">Chats</string>
+    <string name="postFragment_title" translatable="false">Post</string>
     <string name="txtInput_hint_email">Email</string>
     <string name="txtInput_hint_password">Password</string>
-    <string name="fragment_login_btnLogin">Login</string>
+    <string name="fragment_login_btnLogin">Log in</string>
     <string name="fragment_login_lblNotRegistered">Not registered? Create an account</string>
-    <string name="fragment_signup_txtSignupUser">User</string>
-    <string name="fragment_signup_btnSignUp">Sign up</string>
-    <string name="fragment_signup_lblReturnLogin">Login</string>
+    <string name="fragment_signup_txtSignupUser">Username</string>
+    <string name="fragment_signup_btnSignUp">Create Account</string>
+    <string name="fragment_signup_lblReturnLogin">Already have an account? Login</string>
     <string name="error_weak_password">Password should be at least 6 characters</string>
     <string name="error_user_exists">The email address is already in use.</string>
     <string name="error_invalid_email">The email must be a valid email address.</string>
+    <string name="fragment_login_lblForgotPassword">Forgot Password?</string>
 </resources>

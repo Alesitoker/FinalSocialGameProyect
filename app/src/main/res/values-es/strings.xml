@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinalSocialGameProyect</string>
+    <string name="error_invalid_email">El correo electrónico debe ser una dirección válida.</string>
+    <string name="error_user_exists">La dirección de correo electrónico ya está en uso.</string>
+    <string name="error_weak_password">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="fragment_login_btnLogin">Iniciar sesión</string>
+    <string name="fragment_login_lblForgotPassword">¿Has olvidado tu contraseña?</string>
+    <string name="fragment_login_lblNotRegistered">¿No tienes una cuenta? Regístrate</string>
+    <string name="fragment_signup_btnSignUp">Crear cuenta</string>
+    <string name="fragment_signup_lblReturnLogin">¿Ya tienes una cuenta? Iniciar sesión</string>
+    <string name="fragment_signup_txtSignupUser">Nombre de usuario</string>
+    <string name="loginFragment_title">Inicio de sesión</string>
+    <string name="signInFragment_title">Crear cuenta</string>
+    <string name="txtInput_hint_email">Correo electrónico</string>
+    <string name="txtInput_hint_password">Contraseña</string>
+</resources>
