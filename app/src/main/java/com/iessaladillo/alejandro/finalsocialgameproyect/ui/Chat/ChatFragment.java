@@ -35,6 +35,5 @@ public class ChatFragment extends Fragment {
     private void setupViews() {
         FirebaseUser user = mAuth.getCurrentUser();
 
-        b.userName.setText(user.getUid());
     }
 }

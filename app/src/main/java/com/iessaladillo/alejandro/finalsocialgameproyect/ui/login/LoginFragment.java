@@ -90,7 +90,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void navigateToChat() {
-        navController.navigate(R.id.actionLoginToChat);
+        navController.navigate(R.id.actionLoginToListChats);
     }
 
     private void navigateToSignIn() {

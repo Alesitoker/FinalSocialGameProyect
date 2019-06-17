@@ -15,4 +15,6 @@
     <string name="error_user_exists">The email address is already in use.</string>
     <string name="error_invalid_email">The email must be a valid email address.</string>
     <string name="fragment_login_lblForgotPassword">Forgot Password?</string>
+    <string name="fragment_chat_txtSendmsg">Enter message</string>
+    <string name="listChatsFragment_title">List chats</string>
 </resources>

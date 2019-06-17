@@ -83,6 +83,8 @@ public class SignUpFragment extends Fragment {
                         Log.d("tag", "createUserWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateProfile(user);
+                        SnackbarUtils.snackbar(requireView(), "Your account has been successfully created.");
+                        navigateToLogin();
 //                        updateUI(user);
                     } else {
 //                        Log.w("tag", "createUserWithEmail:failure", task.getException());
