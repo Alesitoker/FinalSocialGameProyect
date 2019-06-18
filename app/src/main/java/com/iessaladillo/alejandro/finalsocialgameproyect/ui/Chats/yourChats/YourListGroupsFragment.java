@@ -1,4 +1,4 @@
-package com.iessaladillo.alejandro.finalsocialgameproyect.ui.Chats;
+package com.iessaladillo.alejandro.finalsocialgameproyect.ui.Chats.yourChats;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class ListChatsFragment extends Fragment {
+import com.iessaladillo.alejandro.finalsocialgameproyect.databinding.FragmentYourListChatsBinding;
+
+public class YourListGroupsFragment extends Fragment {
+
+    private FragmentYourListChatsBinding b;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,7 +24,8 @@ public class ListChatsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        b = FragmentYourListChatsBinding.inflate(inflater, container, false);
+        return b.getRoot();
     }
 
     @Override

@@ -1,4 +1,4 @@
 package com.iessaladillo.alejandro.finalsocialgameproyect.ui.Chats;
 
-public class ListChatsFragmentAdapter {
+public class ListGroupsFragmentAdapter {
 }

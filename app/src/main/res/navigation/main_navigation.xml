@@ -36,6 +36,18 @@
         tools:layout="@layout/fragment_post" />
     <fragment
         android:id="@+id/listChatsFragment"
-        android:name="com.iessaladillo.alejandro.finalsocialgameproyect.ui.Chats.ListChatsFragment"
-        android:label="@string/listChatsFragment_title" />
+        android:name="com.iessaladillo.alejandro.finalsocialgameproyect.ui.Chats.ListGroupsFragment"
+        android:label="@string/listChatsFragment_title" >
+        <action
+            android:id="@+id/actionListChatsToChat"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/yourListChatsFragment"
+        android:name="com.iessaladillo.alejandro.finalsocialgameproyect.ui.Chats.yourChats.YourListGroupsFragment"
+        android:label="YourListChatsFragment" >
+        <action
+            android:id="@+id/actionYourListChatsToChat"
+            app:destination="@id/chatFragment" />
+    </fragment>
 </navigation>
