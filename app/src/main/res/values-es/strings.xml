@@ -14,4 +14,11 @@
     <string name="signInFragment_title">Crear cuenta</string>
     <string name="txtInput_hint_email">Correo electrónico</string>
     <string name="txtInput_hint_password">Contraseña</string>
+    <string name="LoginFragment_NetworkError">Se ha producido un error de red</string>
+    <string name="SignUpFragment_NetworkError">Se ha producido un error de red</string>
+    <string name="menu_create_group">Crear grupo</string>
+    <string name="fragment_group_creation_form_txtLanguageLayout">Idioma</string>
+    <string name="fragment_group_creation_form_txtGroupNameLayout">Nombre del grupo</string>
+    <string name="fragment_group_creation_form_txtGameLayout">Juego</string>
+    <string name="menu_done_group">Crear</string>
 </resources>

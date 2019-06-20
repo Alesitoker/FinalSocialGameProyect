@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -49,7 +50,7 @@ public class SignUpFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
+        //TODO: Comprobar si la sesion esta iniciada.
         FirebaseUser user = mAuth.getCurrentUser();
 //        updateUI(user);
     }
@@ -83,14 +84,9 @@ public class SignUpFragment extends Fragment {
                         Log.d("tag", "createUserWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
                         updateProfile(user);
-                        SnackbarUtils.snackbar(requireView(), "Your account has been successfully created.");
+                        SnackbarUtils.snackbar(requireView(), getString(R.string.SignUp_fragment_successful_account_creation));
                         navigateToLogin();
-//                        updateUI(user);
                     } else {
-//                        Log.w("tag", "createUserWithEmail:failure", task.getException());
-//                        Toast.makeText(requireContext(), task.getResult().getAdditionalUserInfo().toString(),
-//                                Toast.LENGTH_SHORT).show();
-
                         try {
                             throw task.getException();
                         } catch(FirebaseAuthWeakPasswordException e) {
@@ -101,10 +97,11 @@ public class SignUpFragment extends Fragment {
                             b.txtSignupEmail.requestFocus();
                         } catch(FirebaseAuthUserCollisionException e) {
                             SnackbarUtils.snackbar(requireView(), getString(R.string.error_user_exists));
+                        } catch (FirebaseNetworkException e) {
+                            SnackbarUtils.snackbar(requireView(), getString(R.string.SignUpFragment_NetworkError));
                         } catch(Exception e) {
-                            Log.e("tag", e.getMessage());
+                            SnackbarUtils.snackbar(requireView(), e.getMessage());
                         }
-//                        updateUI(null);
                     }
 
 //                    hideProgressDialog();

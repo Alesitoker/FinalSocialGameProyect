@@ -17,8 +17,8 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/actionLoginToListChats"
-            app:destination="@id/listChatsFragment" />
+            android:id="@+id/actionLoginToListGroups"
+            app:destination="@id/listGroupsFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -35,19 +35,29 @@
         android:label="@string/postFragment_title"
         tools:layout="@layout/fragment_post" />
     <fragment
-        android:id="@+id/listChatsFragment"
+        android:id="@+id/listGroupsFragment"
         android:name="com.iessaladillo.alejandro.finalsocialgameproyect.ui.Chats.ListGroupsFragment"
-        android:label="@string/listChatsFragment_title" >
+        android:label="@string/listGroupsFragment_title" >
         <action
-            android:id="@+id/actionListChatsToChat"
+            android:id="@+id/actionListGroupsToChat"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/actionListGroupsToGroupCreationForm"
+            app:destination="@id/groupCreationFormFragment" />
     </fragment>
     <fragment
-        android:id="@+id/yourListChatsFragment"
+        android:id="@+id/yourListGroupsFragment"
         android:name="com.iessaladillo.alejandro.finalsocialgameproyect.ui.Chats.yourChats.YourListGroupsFragment"
-        android:label="YourListChatsFragment" >
+        android:label="@string/YourListGroupsFragment_title" >
         <action
-            android:id="@+id/actionYourListChatsToChat"
+            android:id="@+id/actionYourListGroupsToChat"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/actionYourListGroupsToGroupCreationForm"
+            app:destination="@id/groupCreationFormFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/groupCreationFormFragment"
+        android:name="com.iessaladillo.alejandro.finalsocialgameproyect.ui.newGroup.GroupCreationFormFragment"
+        android:label="@string/groupCreationFormFragment_title" />
 </navigation>

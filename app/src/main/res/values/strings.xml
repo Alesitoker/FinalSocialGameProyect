@@ -4,6 +4,7 @@
     <string name="signInFragment_title">Sign up</string>
     <string name="chatFragment_title" translatable="false">Chats</string>
     <string name="postFragment_title" translatable="false">Post</string>
+    <string name="settingsFragment_title">Settings</string>
     <string name="txtInput_hint_email">Email</string>
     <string name="txtInput_hint_password">Password</string>
     <string name="fragment_login_btnLogin">Log in</string>
@@ -16,5 +17,16 @@
     <string name="error_invalid_email">The email must be a valid email address.</string>
     <string name="fragment_login_lblForgotPassword">Forgot Password?</string>
     <string name="fragment_chat_txtSendmsg">Enter message</string>
-    <string name="listChatsFragment_title">List chats</string>
+    <string name="listGroupsFragment_title">List chats</string>
+    <string name="SignUp_fragment_successful_account_creation">Your account has been successfully created.</string>
+    <string name="LoginFragment_AuthInvalidCredentials">Incorrect email or password.</string>
+    <string name="LoginFragment_NetworkError">An error has occurred in the network</string>
+    <string name="SignUpFragment_NetworkError">An error has occurred in the network</string>
+    <string name="menu_create_group">Create group</string>
+    <string name="fragment_group_creation_form_txtGroupNameLayout">Group name</string>
+    <string name="fragment_group_creation_form_txtGameLayout">Game</string>
+    <string name="fragment_group_creation_form_txtLanguageLayout">Language</string>
+    <string name="menu_done_group">Create</string>
+    <string name="YourListGroupsFragment_title">Your Groups</string>
+    <string name="groupCreationFormFragment_title">Group creation</string>
 </resources>

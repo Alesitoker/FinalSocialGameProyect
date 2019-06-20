@@ -11,13 +11,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.iessaladillo.alejandro.finalsocialgameproyect.R;
-import com.iessaladillo.alejandro.finalsocialgameproyect.databinding.FragmentListChatsBinding;
+import com.iessaladillo.alejandro.finalsocialgameproyect.databinding.FragmentListGroupsBinding;
 
 public class ListGroupsFragment extends Fragment {
 
-    private FragmentListChatsBinding b;
+    private FragmentListGroupsBinding b;
+    private NavController navController;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,13 +31,19 @@ public class ListGroupsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        b = FragmentListChatsBinding.inflate(inflater, container, false);
+        b = FragmentListGroupsBinding.inflate(inflater, container, false);
         return b.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        navController = NavHostFragment.findNavController(this);
+        setupViews();
+
+    }
+
+    private void setupViews() {
 
     }
 
@@ -47,13 +56,14 @@ public class ListGroupsFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.mnuCreateChat) {
-            createGroup();
+            navigateToGroupCreation();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void createGroup() {
-
+    private void navigateToGroupCreation() {
+        navController.navigate(R.id.actionListGroupsToGroupCreationForm);
     }
+
 }

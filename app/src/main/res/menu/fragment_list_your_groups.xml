@@ -7,5 +7,4 @@
         android:icon="@drawable/ic_dashed_circle_24dp"
         app:showAsAction="ifRoom|withText"
         />
-
 </menu>

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.firebase.FirebaseNetworkException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,6 +42,13 @@ public class LoginFragment extends Fragment {
         setupViews();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        //TODO: Comprobar si la sesion esta iniciada.
+        FirebaseUser user = mAuth.getCurrentUser();
+    }
+
     private void setupViews() {
         b.btnLogin.setOnClickListener(v -> logIn(b.txtEmail.getText().toString().trim(),
                 b.txtPassword.getText().toString().trim()));
@@ -57,7 +65,7 @@ public class LoginFragment extends Fragment {
             b.btnLogin.setEnabled(true);
         }
     }
-
+    //TODO: No poder ir atras hacia el log in al iniciar sesión.
     private void logIn(String email, String password) {
         // TODO: quitar log, hacer el login mas intuitivo
         mAuth.signInWithEmailAndPassword(email, password)
@@ -65,7 +73,7 @@ public class LoginFragment extends Fragment {
                     if (task.isSuccessful()) {
                         Log.d("tagL", "signInWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        navigateToChat();
+                        navigateToListGroups();
                     } else {
                         Log.w("tagL", "signInWithEmail:failure", task.getException());
 //                        Toast.makeText(requireContext(), "Authentication failed.",
@@ -74,23 +82,20 @@ public class LoginFragment extends Fragment {
                         try {
                             throw task.getException();
                         } catch (FirebaseAuthInvalidCredentialsException e) {
-                            SnackbarUtils.snackbar(requireView(), "Incorrect email or password.");
+                            SnackbarUtils.snackbar(requireView(), getString(R.string.LoginFragment_AuthInvalidCredentials));
+                        } catch (FirebaseNetworkException e) {
+                            SnackbarUtils.snackbar(requireView(), getString(R.string.LoginFragment_NetworkError));
                         } catch (Exception e) {
-                            Log.e("tagL", e.getMessage());
+                            SnackbarUtils.snackbar(requireView(), e.getMessage());
                         }
                     }
 
-                    if (!task.isSuccessful()) {
-//                        Toast.makeText(requireContext(), "Muy bieneeesss he fallado",
-//                                Toast.LENGTH_SHORT).show();
-//                            mStatusTextView.setText(R.string.auth_failed);
-                    }
-//                        hideProgressDialog();
+//                   hideProgressDialog();
                 });
     }
 
-    private void navigateToChat() {
-        navController.navigate(R.id.actionLoginToListChats);
+    private void navigateToListGroups() {
+        navController.navigate(R.id.actionLoginToListGroups);
     }
 
     private void navigateToSignIn() {
